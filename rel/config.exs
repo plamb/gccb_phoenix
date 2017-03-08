@@ -22,12 +22,14 @@ use Mix.Releases.Config,
 # and environment configuration is called a profile
 
 environment :dev do
+  plugin MyApp.DistilleryPlugins
   set dev_mode: true
   set include_erts: false
   set cookie: :"ld02YCa,8lsm[p|[%OA&SyG`1rkLM`>AFG4f;hFKk|n=J1(g^[_p<r:J&(vG7,`M"
 end
 
 environment :prod do
+  plugin MyApp.DistilleryPlugins
   set include_erts: true
   set include_src: false
   set cookie: :"]_R=Uer4oJ{NXF@tgjfM|1M<Qp^?]:xMDOreb[PsW~f&L}EYKiwY*Y}0JPdtr4nK"
@@ -39,6 +41,6 @@ end
 # will be used by default
 
 release :myapp do
-  set version: current_version(:myapp)
+  set version: "#{current_version(:myapp)}-#{System.cmd("git", ["rev-parse", "--short", "HEAD"]) |> elem(0) |> String.rstrip}"
 end
 
