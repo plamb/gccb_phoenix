@@ -9,4 +9,4 @@ steps:
   env:  ['MIX_ENV=prod', 'BRUNCH_ENV=production']
   args: ['/bin/bash', '-c', 'mix compile; mix phoenix.digest; mix release --env=prod']
 - name: gcr.io/cloud-builders/gsutil
-  args: ['/bin/bash', '-c', 'cat _build/prod/rel/myapp/achives.txt | cp -I gs://backup-1yr.olr.zone/releases/myapp/']
+  args: ['which', 'bash']
