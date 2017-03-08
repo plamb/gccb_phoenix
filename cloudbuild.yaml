@@ -10,4 +10,4 @@ steps:
   args: ['/bin/bash', '-c', 'mix compile; mix phoenix.digest; mix release --env=prod']
 - name: gcr.io/cloud-builders/gsutil
   entrypoint: '/bin/bash'
-  args: ['cat _build/prod/rel/myapp/achives.txt | cp -I gs://backup-1yr.olr.zone/releases/myapp/']
+  args: ['cat _build/prod/rel/myapp/achives.txt | cp -I gs://backup-1yr.olr.zone/releases/gccb_phoenix/']
