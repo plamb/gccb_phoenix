@@ -1,0 +1,5 @@
+steps:
+- name: 'gcr.io/glass-approach-90218/elixir-mix'
+  args: ['mix', 'deps.get']
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['npm', 'install']
