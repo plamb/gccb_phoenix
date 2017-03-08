@@ -1,3 +1,6 @@
+# if we do a local build we want the ignores to start with the
+# same ones in .gitignore
+
 # App artifacts
 /_build
 /db
@@ -28,3 +31,8 @@ erl_crash.dump
 .deliver/releases/
 releases/
 *.tar.gz
+
+.dockerignore
+#.git # depending on how you are doing things, this may not be wise
+
+
