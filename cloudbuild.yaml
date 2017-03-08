@@ -2,7 +2,7 @@ steps:
 - name: 'gcr.io/$PROJECT_ID/elixir-mix'
   env:  ['MIX_ENV=prod', 'BRUNCH_ENV=production']
   args: ['mix', 'deps.get']
-- name: gcr.io/cloud-builders/npm
+- name: 'node:6.10'
   env:  ['MIX_ENV=prod', 'BRUNCH_ENV=production']
   args: ['/bin/bash', '-c', 'npm install; ./node_modules/brunch/bin/brunch b -p']
 - name: 'gcr.io/$PROJECT_ID/elixir-mix'
