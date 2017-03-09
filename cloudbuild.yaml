@@ -1,7 +1,7 @@
 steps:
 - name: 'gcr.io/$PROJECT_ID/elixir-mix'
   env:  ['MIX_ENV=prod', 'BRUNCH_ENV=production']
-  args: ['mix', 'deps.get']
+  args: ['mix', 'do deps.get, deps.compile']
 - name: 'node:6.10'
   env:  ['MIX_ENV=prod', 'BRUNCH_ENV=production']
   args: ['/bin/bash', '-c', 'npm install --silent; ./node_modules/brunch/bin/brunch b -p']
@@ -9,5 +9,4 @@ steps:
   env:  ['MIX_ENV=prod', 'BRUNCH_ENV=production']
   args: ['/bin/bash', '-c', 'mix compile; mix phoenix.digest; mix release --env=prod']
 - name: gcr.io/cloud-builders/gsutil
-  entrypoint: /bin/bash
-  args: ['-c','/bin/cat _build/prod/rel/myapp/archives.txt | /builder/google-cloud-sdk/bin/gsutil -m cp -I gs://backup-1yr.olr.zone/releases/gccb_phoenix/']
+  args: [cp _build/prod/rel/artifacts/* gs://backup-1yr.olr.zone/releases/gccb_phoenix/']
