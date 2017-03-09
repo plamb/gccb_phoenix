@@ -1,7 +1,7 @@
 # Overview
 This is a DRAFT and but gives you the overview of how to do it. Future updates will go into more details. I also do not cover how to deploy your release after it's created and copied to a bucket.
 
-We are going to create a container with elixir and mix that gets our dependencies, compiles our app and creates the release using distillery. The resulting tar.gz file is then going to get copied to a release bucket and named with :appname-version-git_hash.tar.gz.
+This example uses [Google Cloud Container Builder](https://cloud.google.com/container-builder/docs/) to build an Elixir Phoenix app. We are going to create a container with elixir and mix that gets our dependencies, compiles our app and creates the release using distillery. The resulting tar.gz file is then going to get copied to a release bucket and named with :appname-version-git_hash.tar.gz.
 
 The domain globaldomination.co is used here as an example, when you see it, you'll know you need to change something.
 
@@ -9,11 +9,11 @@ I don't cover how to link your repository to container build, see the docs for d
 
 -Start with a stock Phoenix 1.2 application.
 
--Add Distillery, mix release.init, and update config/prod.exs
+-Add Distillery, mix release.init, and update config/prod.exs (see plugins and version)
 
 -Comment out prod.secrets.exs in config/prod.exs
 
--Add docker/Dockerfile for elixir-mix container
+-Add docker/Dockerfile for elixir container that also has mix.
 
 -Add distillery plugin to rel/plugins/plugin.exs. Plugin will copy the resulting .tar.gz files to the _build/prod/rel/artifacts directory.
 
