@@ -42,14 +42,4 @@ defmodule MyApp.DistilleryPlugins do
     File.copy(archive_path, artifact)
     release
   end
-
-  # def write_archive_path(%Release{} = release) do
-  #   archive_path = Mix.Releases.Release.archive_path(release)
-  #   output_dir = release.output_dir
-  #   archive_list_filename = Path.join([output_dir, "archives.txt"])
-  #   File.write(archive_list_filename, archive_path, [:append])
-
-  #   release
-  # end
-
 end

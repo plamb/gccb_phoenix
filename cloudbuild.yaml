@@ -2,6 +2,7 @@ steps:
 - name: 'gcr.io/$PROJECT_ID/elixir-mix'
   env:  ['MIX_ENV=prod', 'BRUNCH_ENV=production']
   args: ['mix', 'deps.get']
+# the gcr.io/cloud-builders/npm image was not working at time this was written
 - name: 'node:6.10'
   env:  ['MIX_ENV=prod', 'BRUNCH_ENV=production']
   args: ['/bin/bash', '-c', 'npm install --silent; ./node_modules/brunch/bin/brunch b -p']
@@ -9,4 +10,4 @@ steps:
   env:  ['MIX_ENV=prod', 'BRUNCH_ENV=production']
   args: ['/bin/bash', '-c', 'mix compile; mix phoenix.digest; mix release --env=prod']
 - name: gcr.io/cloud-builders/gsutil
-  args: ['cp', '_build/prod/rel/artifacts/*', 'gs://backup-1yr.olr.zone/releases/gccb_phoenix/']
+  args: ['cp', '_build/prod/rel/artifacts/*', 'gs://releases.globaldomination.co/gccb_phoenix/']
