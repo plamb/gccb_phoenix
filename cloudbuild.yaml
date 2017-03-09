@@ -1,7 +1,7 @@
 steps:
 - name: 'gcr.io/$PROJECT_ID/elixir-mix'
   env:  ['MIX_ENV=prod', 'BRUNCH_ENV=production']
-  args: ['mix', 'do deps.get, deps.compile']
+  args: ['mix', 'do', 'deps.get,deps.compile']
 - name: 'node:6.10'
   env:  ['MIX_ENV=prod', 'BRUNCH_ENV=production']
   args: ['/bin/bash', '-c', 'npm install --silent; ./node_modules/brunch/bin/brunch b -p']
